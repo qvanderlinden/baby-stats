@@ -5,11 +5,11 @@ services:
     image: postgres:17.6-alpine
     restart: always
     environment:
-      POSTGRES_DB: baby_stats
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -17,7 +17,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "${ADMINER_PORT}:8080"
 
 volumes:
   postgres_data:
