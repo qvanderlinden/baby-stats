@@ -7,7 +7,9 @@ authors = [
     { name = "Quentin Vanderlinden", email = "quentin.vanderlinden@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "sqlalchemy>=2.0.0",
+]
 
 [project.scripts]
 api = "api:main"
