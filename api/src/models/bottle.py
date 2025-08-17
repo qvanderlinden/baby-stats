@@ -20,5 +20,5 @@ class Bottle(Base):
     created_at: Mapped[dt] = mapped_column(default=dt.now)
     updated_at: Mapped[dt] = mapped_column(default=dt.now, onupdate=dt.now)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"<Bottle(id={self.id}, datetime={self.datetime}, quantity={self.quantity}ml)>"
