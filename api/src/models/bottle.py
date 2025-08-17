@@ -1,7 +1,7 @@
 from datetime import datetime as dt
 from sqlalchemy.orm import Mapped, mapped_column
 
-from . import Base
+from .base import Base
 
 
 class Bottle(Base):
