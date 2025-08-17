@@ -15,7 +15,7 @@ class PostgresDatabase(BaseModel):
 
     @property
     def connection_string(self) -> str:
-        return f"postgres+{self.driver}://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
+        return f"postgresql+{self.driver}://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
 
 
 class Config(BaseSettings):
