@@ -15,10 +15,11 @@ class Bottle(Base):
     # Bottle details
     datetime: Mapped[dt]
     quantity: Mapped[float]
+    burp: Mapped[bool]
 
     # Timestamps
     created_at: Mapped[dt] = mapped_column(default=dt.now)
     updated_at: Mapped[dt] = mapped_column(default=dt.now, onupdate=dt.now)
 
     def __repr__(self) -> str:
-        return f"<Bottle(id={self.id}, datetime={self.datetime}, quantity={self.quantity}ml)>"
+        return f"<Bottle(id={self.id}, datetime={self.datetime}, quantity={self.quantity}ml) burp={self.burp}>"
