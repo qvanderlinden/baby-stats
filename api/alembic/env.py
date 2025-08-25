@@ -5,18 +5,16 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.config import Config
+from src.config import config as api_config
 from src.models.base import Base
 import src.models
-
-apiConfig = Config()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
 # we override the default connection string with the one from the config coming from the .env file
-config.set_main_option("sqlalchemy.url", apiConfig.db.connection_string)
+config.set_main_option("sqlalchemy.url", api_config.db.connection_string)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

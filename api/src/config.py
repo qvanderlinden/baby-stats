@@ -27,3 +27,6 @@ class Config(BaseSettings):
     )
 
     db: PostgresDatabase = Field(alias="POSTGRES_DB")
+
+
+config = Config()
