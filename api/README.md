@@ -21,3 +21,13 @@ uv run mypy .
 ```
 uvx run api
 ```
+
+## Run migrations
+
+```
+uv run alembic revision --autogenerate -m "Revision description"
+```
+
+```
+uv run alembic upgrade head
+```
