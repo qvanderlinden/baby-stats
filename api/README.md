@@ -1,5 +1,11 @@
 # Baby stats API
 
+## Run the api
+
+```
+uv run fastapi dev src/main.py
+```
+
 ## Lint
 
 ```
