@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function History() {
   return (
     <SafeAreaView style={styles.container}>
-      <Link href="/new" asChild prefetch>
+      <Link href="/form" asChild prefetch>
         <Pressable style={styles.plusButton}>
           <AntDesign name="plus" size={32} />
         </Pressable>
