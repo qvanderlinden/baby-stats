@@ -19,15 +19,18 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "mypy>=1.17.1",
+    "mypy>=1.18.1",
     "ruff>=0.12.9",
-    "django-stubs>=5.2.0",
+    "django-stubs[compatible-mypy]>=5.2.0",
 ]
 
 [tool.mypy]
 disallow_untyped_defs = true
-plugins = ["pydantic.mypy"]
-exclude = []
+plugins = ["pydantic.mypy", "mypy_django_plugin.main"]
+exclude = ["src/mysite/settings.py", "manage.py"]
+
+[tool.django-stubs]
+django_settings_module = "mysite.settings"
 
 [tool.ruff]
 exclude = []

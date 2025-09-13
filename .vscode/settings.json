@@ -1,0 +1,4 @@
+{
+  "mypy.configFile": "backend/pyproject.toml",
+  "mypy.envFile": ".env",
+}
