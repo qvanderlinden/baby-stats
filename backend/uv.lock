@@ -26,7 +26,6 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
-    { name = "mypy" },
     { name = "psycopg" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
@@ -42,7 +41,6 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=5.2.6" },
-    { name = "mypy", specifier = ">=1.18.1" },
     { name = "psycopg", specifier = ">=3.2.10" },
     { name = "pydantic", specifier = ">=2.11.7" },
     { name = "pydantic-settings", specifier = ">=2.10.1" },
@@ -51,7 +49,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "django-stubs", extras = ["compatible-mypy"], specifier = ">=5.2.0" },
-    { name = "mypy", specifier = ">=1.17.1" },
+    { name = "mypy", specifier = ">=1.18.1" },
     { name = "ruff", specifier = ">=0.12.9" },
 ]
 
