@@ -4,29 +4,29 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-Baby Stats is a full-stack application for tracking baby feeding data, built with a FastAPI backend and React Native Expo frontend. The application tracks bottle feeding records with datetime, quantity, and burp information.
+Baby Stats is a full-stack application for tracking baby feeding data, built with a Django backend and React Native Expo frontend. The application tracks bottle feeding records with datetime, quantity, and burp information.
 
 ## Architecture
 
 This is a monorepo containing:
 
-- **`api/`** - FastAPI backend with PostgreSQL database
+- **`backend/`** - Django backend with PostgreSQL database
 - **`frontend/`** - React Native Expo mobile application
 - **Database** - PostgreSQL with Docker Compose setup
 
-### Backend Architecture (`api/`)
+### Backend Architecture (`backend/`)
 
-- **Framework**: FastAPI with SQLAlchemy ORM
-- **Database**: PostgreSQL with Alembic migrations
+- **Framework**: Django
+- **Database**: PostgreSQL with Django migrations
 - **Configuration**: Pydantic Settings with environment variable support
 - **Type Safety**: mypy with strict settings, Pydantic validation
 - **Code Quality**: Ruff for linting and formatting
 
 Key modules:
-- `src/models/` - SQLAlchemy models (currently `Bottle`)
-- `src/config.py` - Application configuration with Pydantic
-- `src/api/` - API routes and endpoints (minimal setup currently)
-- `alembic/` - Database migration files
+
+- `src/backend/config.py` - Application configuration with Pydantic
+- `src/baby_stats/` - Django App
+- `src/mysite/` - Django Project
 
 ### Frontend Architecture (`frontend/`)
 
@@ -60,23 +60,23 @@ docker compose up -d
 docker compose down
 ```
 
-### Backend Development (`api/`)
+### Backend Development (`backend/`)
 
 ```bash
-# Navigate to API directory
-cd api
+# Navigate to the backend directory
+cd backend
 
 # Install dependencies
 uv sync
 
 # Run development server
-uv run fastapi dev src/main.py
+uv run manage.py runserver
 
 # Create new migration
-uv run alembic revision --autogenerate -m "Description"
+uv run manage.py makemigrations
 
 # Run migrations
-uv run alembic upgrade head
+uv run manage.py migrate
 
 # Linting and formatting
 uvx ruff check
@@ -85,8 +85,8 @@ uvx ruff format
 # Type checking
 uv run mypy .
 
-# Run the API (production-like)
-uvx run api
+# Run the backend (production-like)
+uvx run backend
 ```
 
 ### Frontend Development (`frontend/`)
@@ -128,9 +128,9 @@ Database admin interface available at `http://localhost:8080` via Adminer.
 ## Development Workflow
 
 1. **Database First**: Start with `docker compose up -d` to run PostgreSQL
-2. **Backend Development**: Use `uv run fastapi dev src/main.py` for API development
+2. **Backend Development**: Use `uv run manage.py runserver` for backend development
 3. **Frontend Development**: Use `npx expo start` for mobile app development
-4. **Schema Changes**: Create Alembic migrations when modifying models
+4. **Schema Changes**: Create Django migrations when modifying models
 5. **Type Safety**: Both frontend and backend use strict type checking (mypy/TypeScript)
 
 ## Project-Specific Notes
@@ -139,5 +139,4 @@ Database admin interface available at `http://localhost:8080` via Adminer.
 - Frontend models (`frontend/models/`) should match backend SQLAlchemy models
 - Database configuration uses nested environment variables with `__` delimiter
 - The project is in early development with minimal API endpoints currently implemented
-- Ruff configuration excludes `alembic/` directory from linting
-- MyPy configuration excludes `alembic/` and uses Pydantic plugin
+- MyPy configuration uses Pydantic and mypy plugins
