@@ -6,11 +6,11 @@ export default function RootLayout() {
       <Stack.Screen name="index" />
       <Stack.Screen name="stats" />
       <Stack.Screen
-        name="new"
+        name="form"
         options={{
           presentation: "formSheet",
           sheetGrabberVisible: true,
-          sheetAllowedDetents: [0.25, 1],
+          sheetAllowedDetents: "fitToContents",
         }}
       />
     </Stack>
