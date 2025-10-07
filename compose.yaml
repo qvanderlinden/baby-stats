@@ -5,11 +5,11 @@ services:
     image: postgres:18-alpine
     restart: always
     environment:
-      POSTGRES_DB: ${POSTGRES_DB__DATABASE}
-      POSTGRES_USER: ${POSTGRES_DB__USER}
-      POSTGRES_PASSWORD: ${POSTGRES_DB__PASSWORD}
+      POSTGRES_DB: ${POSTGRES__DATABASE}
+      POSTGRES_USER: ${POSTGRES__USER}
+      POSTGRES_PASSWORD: ${POSTGRES__PASSWORD}
     ports:
-      - "${POSTGRES_DB__PORT}:5432"
+      - "${POSTGRES__PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -17,7 +17,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - "${ADMINER_PORT}:8080"
+      - "${ADMINER__PORT}:8080"
     depends_on:
       - db
 
