@@ -15,9 +15,10 @@
     "better-auth": "^1.3.27"
   },
   "scripts": {
-    "start": "bun --env-file=.env.local --env-file=../.env src/index.ts",
+    "start": "bun --env-file=.env.local --env-file=../.env --hot src/index.ts",
     "migrate-dev": "bun run --env-file=.env.local --env-file=../.env prisma migrate dev --name auth",
     "migrate-prod": "bun run --env-file=.env.local --env-file=../.env prisma migrate deploy",
-    "migrate-reset": "bun run --env-file=.env.local --env-file=../.env prisma migrate reset"
+    "migrate-reset": "bun run --env-file=.env.local --env-file=../.env prisma migrate reset",
+    "prisma-studio": "bun run --env-file=.env.local --env-file=../.env prisma studio"
   }
 }
