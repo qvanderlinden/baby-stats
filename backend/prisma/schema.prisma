@@ -1,0 +1,17 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator backend_client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  runtime = "bun"
+}
+
+generator frontend_client {
+  provider = "prisma-client"
+  output   = "../../frontend/generated/prisma"
+  runtime = "react-native"
+  previewFeatures = ["reactNative"]
+}
